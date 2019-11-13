@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  examenonecore.web:
+    image: ${DOCKER_REGISTRY-}examenonecoreweb
+    build:
+      context: .
+      dockerfile: ExamenOneCore.Web/Dockerfile

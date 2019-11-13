@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj": {}
+    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj": {}
   },
   "projects": {
-    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj": {
+    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj",
+        "projectUniqueName": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj",
         "projectName": "ExamenOneCore.Entity",
-        "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj",
+        "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj",
         "packagesPath": "C:\\Users\\BMXDDT051987\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\obj\\",
+        "outputPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -72,14 +72,14 @@
         }
       }
     },
-    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj": {
+    "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj",
+        "projectUniqueName": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj",
         "projectName": "ExamenOneCore.Web",
-        "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj",
+        "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Web\\ExamenOneCore.Web.csproj",
         "packagesPath": "C:\\Users\\BMXDDT051987\\.nuget\\packages\\",
-        "outputPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Web\\obj\\",
+        "outputPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -100,8 +100,8 @@
         "frameworks": {
           "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj": {
-                "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreVs2017\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj"
+              "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj": {
+                "projectPath": "C:\\Personal\\Dev\\ExamenOneCore\\ExamenOneCoreWeb\\ExamenOneCore.Entitie\\ExamenOneCore.Entity.csproj"
               }
             }
           }
