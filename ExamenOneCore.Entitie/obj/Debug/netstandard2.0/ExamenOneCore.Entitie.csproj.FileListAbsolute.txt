@@ -1,0 +1,9 @@
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\bin\Debug\netstandard2.0\ExamenOneCore.Entitie.deps.json
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\bin\Debug\netstandard2.0\ExamenOneCore.Entitie.dll
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\bin\Debug\netstandard2.0\ExamenOneCore.Entitie.pdb
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.csproj.CoreCompileInputs.cache
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.AssemblyInfoInputs.cache
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.AssemblyInfo.cs
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.dll
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.pdb
+C:\Personal\Dev\ExamenOneCore\ExamenOneCore\ExamenOneCore.Entitie\obj\Debug\netstandard2.0\ExamenOneCore.Entitie.csprojAssemblyReference.cache

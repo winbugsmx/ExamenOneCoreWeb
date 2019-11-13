@@ -1,0 +1,132 @@
+﻿@model ExamenOneCore.Entity.Models.EditUsuarioModel
+<style>
+    .ng-invalid {
+        color: red;
+    }
+
+    .ng-valid {
+    }
+</style>
+<div id="edit" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Actualización de Datos</h5>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div id="div_ShowNotificationModal" class="col-lg-12" style="z-index:9999999999;">
+                <div id="alert_SuccessModal" class="alert alert-success alert-autocloseable-success">
+                </div>
+                <div id="alert_ErrorModal" class="alert alert-danger alert-autocloseable-danger">
+                </div>
+            </div>
+            <form class="shake" role="form" method="post" id="registerForm" name="registerForm" data-toggle="validator" action="~/User/Save">
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="Username">Usuario</label>
+                        @Html.HiddenFor(m => m.UserId)
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @Required = "required" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "bg-danger text-white", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="email">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control", @Required = "required" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "bg-danger text-white", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Sexo</label>
+                        @Html.DropDownListFor(m => m.Sexo, (SelectListItem[])ViewBag.SexSelectLists, "", new { @class = "form-control", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Estatus</label>
+                        @Html.DropDownListFor(m => m.Estatus, (SelectListItem[])ViewBag.StatusSelectLists, "", new { @class = "form-control", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="form-group label-floating">
+                        @Html.CheckBoxFor(m => m.ChangePassword, new { @class = "", @title = "Actualizar Contraseña" })
+                        <label class="control-label" for="email">Actualizar Contraseña</label>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div id="div_ChangePassword">
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="Password">Contraseña</label>
+                            <input class="form-control" type="password" ng-model="newUser.Password" id="Password" name="Password" ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@("@")$!%*#?&])[A-Za-z\d$@("@")$!%*#?&]{10,20}$/">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group label-floating">
+                            <label class="control-label" for="ConfirmPassword">Confirmar Contraseña</label>
+                            <input class="form-control" type="password" ng-model="newUser.ConfirmPassword" compare-to="newUser.Password" id="ConfirmPassword" name="ConfirmPassword" ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@("@")$!%*#?&])[A-Za-z\d$@("@")$!%*#?&]{10,20}$/">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="form-submit" class="btn btn-primary">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/lib/Controllers/ValidateController.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#div_ShowNotificationModal").hide();
+        $("#div_ChangePassword").hide();
+        $("#Username").change(function () {
+            VerificaUsuario("User/", "Modal");
+        });
+        $("#Email").change(function () {
+            VerificaEmail("User/", "Modal");
+        });
+        $('#ChangePassword').change(function () {
+            if (this.checked) {
+                $('#Password').attr('required', true);
+                $('#ConfirmPassword').attr('required', true);
+                $("#div_ChangePassword").show();
+            }
+            else {
+                $('#Password').attr('required', false);
+                $('#ConfirmPassword').attr('required', false);
+                $("#div_ChangePassword").hide();
+            }
+
+        });
+    });
+
+    var frmEdit = $('#registerForm');
+    frmEdit.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: frmEdit.attr('method'),
+            url: frmEdit.attr('action'),
+            data: frmEdit.serialize(),
+            success: function (data) {
+                if (data.returnCode == 200) {
+                    ShowNotification("Modal", false, data.message, function () {
+                    });
+                } else {
+                    ShowNotification("Modal", true, data.message, function () {
+                    });
+                }
+                setTimeout(function () {
+                    $('#edit').modal('hide');
+                    location.reload();
+                }, 5000);
+            },
+            error: function (data) {
+                ShowNotification("Modal", true, data.message, function () {
+                });
+                setTimeout(function () {
+                    $('#edit').modal('hide');
+                    location.reload();
+                }, 5000);
+            },
+        });
+    });
+</script>

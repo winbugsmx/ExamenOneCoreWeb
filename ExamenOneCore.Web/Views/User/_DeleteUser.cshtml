@@ -1,0 +1,65 @@
+﻿@model ExamenOneCore.Entity.Models.DeleteUsuarioModel
+
+<div id="delete" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Eliminar Datos</h5>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div id="div_ShowNotificationModal2" class="col-lg-12" style="z-index:9999999999;">
+                <div id="alert_SuccessModal2" class="alert alert-success alert-autocloseable-success">
+                </div>
+                <div id="alert_ErrorModal2" class="alert alert-danger alert-autocloseable-danger">
+                </div>
+            </div>
+            <form class="shake" role="form" method="post" id="deleteForm" name="deleteForm" data-toggle="validator" action="~/User/Delete">
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                <div class="modal-body">
+                    ¿Está seguro de que desea eliminar este registro?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="del" class="btn btn-danger">Eliminar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#div_ShowNotificationModal2").hide();
+    });
+
+    var frmDelete = $('#deleteForm');
+    frmDelete.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: frmDelete.attr('method'),
+            url: frmDelete.attr('action'),
+            data: frmDelete.serialize(),
+            success: function (data) {
+                if (data.returnCode == 200) {
+                    ShowNotification("Modal2", false, data.message, function () {
+                    });
+                } else {
+                    ShowNotification("Modal2", true, data.message, function () {
+                    });
+                }
+                setTimeout(function () {
+                    $('#edit').modal('hide');
+                    location.reload();
+                }, 5000);
+            },
+            error: function (data) {
+                ShowNotification("Modal2", true, data.message, function () {
+                });
+                setTimeout(function () {
+                    $('#edit').modal('hide');
+                    location.reload();
+                }, 5000);
+            },
+        });
+    });
+</script>

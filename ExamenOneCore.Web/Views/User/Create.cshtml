@@ -1,0 +1,85 @@
+﻿@model ExamenOneCore.Entity.Models.UsuarioModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<link href="~/css/Form.css" rel="stylesheet" />
+
+<section class="Material-contact-section section-padding section-dark">
+    <div class="container">
+        <form class="shake" role="form" method="post" id="registerForm" name="registerForm" data-toggle="validator" action="~/User/Create">
+            <div class="row">
+                <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
+                    <h1 class="section-title">Registro de Usuarios</h1>
+                </div>
+            </div>
+            <div class="row"><br /></div>
+            <div class="row">
+                @Html.AntiForgeryToken()
+                <div class="col-md-6 wow animated fadeInRight" data-wow-delay=".2s">
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="name">Usuario</label>
+                        @*@Html.HiddenFor(m=>m.UserId)*@
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @Required = "required" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "bg-danger text-white", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="email">Contraseña</label>
+                        <input class="form-control" type="password" ng-model="newUser.Password" name="Password" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@("@")$!%*#?&])[A-Za-z\d$@("@")$!%*#?&]{10,20}$/">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label" for="email">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @type = "email", @class = "form-control", @Required = "required" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "bg-danger text-white", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Sexo</label>
+                        @Html.DropDownListFor(m => m.Sexo, (SelectListItem[])ViewBag.SexSelectLists, "", new { @class = "form-control", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Estatus</label>
+                        @Html.DropDownListFor(m => m.Estatus, (SelectListItem[])ViewBag.StatusSelectLists, "", new { @class = "form-control", @Required = "required" })
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-submit mt-5">
+                        <button class="btn btn-common" type="submit" id="form-submit"><i class="material-icons mdi mdi-message-outline"></i>Guardar</button>
+                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
+                    <div ng-messages="registerForm.Password.$error">
+                        <br /><br />
+                        <div style="color:orange" ng-show="!registerForm.Password.$valid">
+                            <br />
+                            La Contraseña debe de ser alfanumérica con una longitud de 10 carácteres que contenga al menos:
+                            <ul>
+                                <li>Mayúscula</li>
+                                <li>Minúscula</li>
+                                <li>Símbolo</li>
+                                <li>Número</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script src="~/lib/Controllers/CreateUserController.js"></script>
+<script src="~/lib/Controllers/ValidateController.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Username").change(function () {
+            VerificaUsuario("","");
+        });
+
+        $("#Email").change(function () {
+            VerificaEmail("","");
+        });
+    });
+</script>

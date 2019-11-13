@@ -1,0 +1,50 @@
+﻿@model ExamenOneCore.Entity.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    List<string> errores = ViewBag.LoginErrors != null ? (List<string>)ViewBag.LoginErrors : new List<string>();
+
+}
+<div class="container">
+    <center>
+        <div class="middle">
+            <div id="login">
+                <form method="post" action="~/Login/Login">
+                    @Html.AntiForgeryToken()
+                    <fieldset class="clearfix">
+                        <p>
+                            <span class="fa fa-user"></span>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "input-login", @Placeholder = "Usuario", @Required = "required" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "bg-danger text-white", @Placeholder = "Usuario", @Required = "required" })
+                        </p>
+                        <p>
+                            <span class="fa fa-lock"></span>
+                            @Html.PasswordFor(m => m.Password, new { @class = "input-login" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "bg-danger text-white" })
+                        </p>
+                        <div>
+                            <span style="width:48%; text-align:left;  display: inline-block;">
+                                <br />
+                            </span>
+                            <span style="width:50%; text-align:right;  display: inline-block;"><input type="submit" value="Entrar"></span>
+                        </div>
+                    </fieldset>
+                    <div class="clearfix"></div>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </center>
+</div>
+@if (errores.Count() > byte.MinValue)
+{
+    <div id="div_ShowNotification" class="col-md-offset-8 col-lg-4 notification pull-right right" style="z-index:9999999999;">
+        <br /><br />
+        <div id="alert_Error" class="alert alert-danger alert-autocloseable-danger">
+            @foreach (string messageError in errores)
+            {
+                @Html.Raw(messageError); <br />
+            }
+        </div>
+    </div>
+}
